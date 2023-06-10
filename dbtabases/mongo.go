@@ -29,7 +29,7 @@ var db *gorm.DB
 var err error
 
 func Connection() *gorm.DB {
-	dsn := "root:root@tcp(127.0.0.1:3306)/feisuvpn?charset=utf8&parseTime=True&loc=Local"
+	dsn := "backstage:Zhutao@908@tcp(123.57.148.218:3306)/feisuvpn?charset=utf8&parseTime=True&loc=Local"
 	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
@@ -40,7 +40,7 @@ func Connection() *gorm.DB {
 var dbh *gorm.DB
 
 func ConnectionH() *gorm.DB {
-	dsn := "root:root@tcp(127.0.0.1:3306)/history?charset=utf8&parseTime=True&loc=Local"
+	dsn := "backstage:Zhutao@908@tcp(123.57.148.218:3306)/history?charset=utf8&parseTime=True&loc=Local"
 	dbh, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
