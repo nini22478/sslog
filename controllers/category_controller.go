@@ -61,7 +61,7 @@ func initRedisClient() (err error) {
 // 处理日志
 func Get() {
 	var model []models.UserNas
-	var tableIds = "3"
+	var tableIds = "2"
 	var context = context.TODO()
 	initRedisClient()
 	if model, tableIdr, err := logics.NasList(model, tableIds); err != nil {
