@@ -22,7 +22,7 @@ func init() {
 	Conrs = cron.New() // 定时任务
 	Conrs.Start()
 	// 删除离职员工
-	_, err := Conrs.AddFunc("@every 10m", controllers.Get) // 每隔1分钟执行一次DeleteStaffs方法
+	_, err := Conrs.AddFunc("@every 1m", controllers.Get) // 每隔1分钟执行一次DeleteStaffs方法
 	if err != nil {
 		// dump.P("删除员工定时任务失败。。。")
 		return
