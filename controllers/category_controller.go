@@ -12,6 +12,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -114,7 +115,9 @@ func FindAll(context *gin.Context) {
 	nas := context.PostForm("nas")
 	DataDb := client.Database("user_log").Collection(nas)
 	filter := bson.M{"userid": userid, "nasname": nas}
-	res, err := DataDb.Find(context, filter)
+	var findOptions = options.FindOptions{}
+	findOptions.SetSort(bson.M{"_id": -1})
+	res, err := DataDb.Find(context, filter, &findOptions)
 	if err != nil {
 		panic(err)
 	}
