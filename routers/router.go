@@ -13,7 +13,7 @@ func InitRouter() *gin.Engine {
 	//router.Use(cors.Default())
 	router.Use(Cors())
 	router.POST("/error", controllers.ErrorPage)
-	router.POST("/FindAll", controllers.FindAll)
+	router.POST("/findAll", controllers.FindAll)
 	return router
 
 }
