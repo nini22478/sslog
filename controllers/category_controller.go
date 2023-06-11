@@ -90,15 +90,16 @@ func Get() {
 							}
 						}
 					} else {
-
-						vl2 := vl1[:posn-3]
-						valout := vl2[10:]
-						if strings.Contains(valout, strconv.Itoa(value.Ports)) == true {
-							DataDb := client.Database("user_log").Collection(value.Nasname)
-							data := Data{Userid: value.Userid, Records: valout, Groupid: value.Groupid, Nasname: value.Nasname, Ports: value.Ports, Starospassword: value.Starospassword, tableId: tableIdr}
-							_, err := DataDb.InsertOne(context, data)
-							if err != nil {
-								log.Fatal(err)
+						for _, value2 := range model {
+							vl2 := vl1[:posn-3]
+							valout := vl2[10:]
+							if strings.Contains(valout, strconv.Itoa(value2.Ports)) == true && value2.Nasname == value.Nasname {
+								DataDb := client.Database("user_log").Collection(value2.Nasname)
+								data := Data{Userid: value2.Userid, Records: valout, Groupid: value2.Groupid, Nasname: value2.Nasname, Ports: value2.Ports, Starospassword: value2.Starospassword, tableId: tableIdr}
+								_, err := DataDb.InsertOne(context, data)
+								if err != nil {
+									log.Fatal(err)
+								}
 							}
 						}
 					}
