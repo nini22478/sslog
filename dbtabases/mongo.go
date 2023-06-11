@@ -13,7 +13,7 @@ import (
 var client *mongo.Client
 
 func InitDB() *mongo.Client {
-	clientOptions := options.Client().ApplyURI("mongodb://120.55.54.57:27017")
+	clientOptions := options.Client().ApplyURI("mongodb://admin:zhutao%40908@120.55.54.57:27017")
 	client, err := mongo.Connect(context.TODO(), clientOptions) // 连接数据库
 	if err != nil {
 		log.Fatal(err)
